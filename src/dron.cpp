@@ -30,7 +30,6 @@ void dron::inicjalizacjadrona(){
   wait4key();
 }
 void dron::przesuneciedronaprzod(double a){
-  pscian();
   Wektor3D<double,3> move;
   move[1]=a;
   zmienp(move);
@@ -64,7 +63,6 @@ void dron::przesuneciedronaprzod(double a){
 }
 
 void dron::przesunieciedronabokl(double a){
-  pscian();
   Wektor3D<double,3> move;
   move[0]=a;
   zmienp(move);
@@ -98,7 +96,6 @@ void dron::przesunieciedronabokl(double a){
 }
 }
 void dron::przesunieciedronagora(double a){
-  pscian();
   Wektor3D<double,3> move;
   move[2]=a;
   zmienp(move);

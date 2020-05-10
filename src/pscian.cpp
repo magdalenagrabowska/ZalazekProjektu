@@ -25,7 +25,7 @@ void pscian::obliczwsp(){
     }
     zmienkat(KatOstr);
    for(unsigned int Ind; Ind<_Wierz_lok.size();++Ind){
-       strmwyj<<(orientacja*_Wierz_lok[Ind]+translacja)<<endl;
+       strmwyj<<(/*orientacja**/_Wierz_lok[Ind]+translacja)<<endl; // na razie macierz obrotowa jeszcze nie jest potrzebna
    }
   strmwyj.close();
 }
