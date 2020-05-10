@@ -10,9 +10,9 @@
 class in_dron{
 public:
 virtual void inicjalizacjadrona()=0;
-virtual void przesunieciedronawbok(int a)=0;
-virtual void przesuneciedronaprzod(int a)=0;
-virtual void przesunieciedronagora(int a)=0;
+virtual void przesunieciedronabokl(double a)=0;
+virtual void przesuneciedronaprzod(double a)=0;
+virtual void przesunieciedronagora(double a)=0;
 };
 
 #endif

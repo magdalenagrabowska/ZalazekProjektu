@@ -6,26 +6,14 @@
 #include "Dr3D_gnuplot_api.hh"
 
 
-using std::vector;
-using drawNS::Point3D;
-using drawNS::APIGnuPlot3D;
 using std::cout;
 using std::endl;
 using std::cin;
 
 
 int main(){
-  
- /*std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-10,10,-10,10,-10,10,1000)); //włacza gnuplota, pojawia się scena [-10,10] x [-10,10] x [-10,10] odświeżana co 1000 ms
-  api->change_ref_time_ms(0); //odświeżanie sceny zmienione na opcję "z każdym pojawieniem się lub zniknięciem kształtu"
-  
- void wait4key(){
-  do {
-    std::cout << "\n Press a key to continue..." << std::endl;
-  } while(std::cin.get() != '\n');
-}*/
   dron dron;
-  int a=0;
+  double a=0;
   char wybor[2] = " ";
   while (wybor[0]!='0'){
   cout<<"Menu"<<endl;;
@@ -47,11 +35,11 @@ int main(){
   case '2':{
     cout<<"podaj o ile chcesz przemieścić w bok.Uwaga:podanie dodatniej wartosci spowoduje przesuniecie w prawo, a ujemnej w lewo"<<endl;
     cin>>a;
-    dron.przesunieciedronawbok(a);
+    dron.przesunieciedronabokl(a);
     break;
   }
   case '3':{
-    cout<<"podaj o ile chcesz przemieścić w przod.Uwaga:podanie dodatniej wartosci spowoduje przesuniecie w przod, a ujemnej w tyl"<<endl;
+    cout<<"podaj o ile chcesz przemieścić w przod.Uwaga:podanie dodatniej wartosci spowoduje przesuniecie w tyl, a ujemnej w przod"<<endl;
     cin>>a;
     dron.przesuneciedronaprzod(a);
     break;

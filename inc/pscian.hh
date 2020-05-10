@@ -9,11 +9,11 @@
 
 class pscian:public virtual bryla{
   protected:
-  std::vector<Wektor3D<double,3>> _Wierz_lok=std::vector<Wektor3D<double,3>>(8);
-  std::vector<Wektor3D<double,3>> _Wierz_glb=_Wierz_lok;
+  std::vector<Wektor3D<double,3>> _Wierz_lok;
   public:
-  bool obliczwsp()override;
-  void zmienp(Wektor3D<double,3> M)override;
-  void zmienkat(double KatOstr)override;
+  pscian();
+  void obliczwsp()override;
+  void zmienp(const Wektor3D<double,3> &M)override;
+  void zmienkat(const double KatOstr)override;
 };
 #endif

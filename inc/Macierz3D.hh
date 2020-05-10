@@ -85,13 +85,12 @@ std::istream& operator>>(std::istream &strm, MacierzKw3D<STyp, SWymiar> &Mac);
 template<typename STyp, int SWymiar>
 std::ostream& operator<<(std::ostream &strm, const MacierzKw3D<STyp, SWymiar> &Mac);
 
-class MacierzOb:MacierzKw3D<double,3>{
+class MacierzOb:public MacierzKw3D<double,3>{
     public:
     MacierzOb(){
-      Wiersz[0][0]=1; Wiersz[1][1]=1; Wiersz[2][2]=1;
     }
     MacierzOb(const MacierzKw3D<double,3>&M):MacierzKw3D<double,3>(M){
-        assert(M.wyznacznikGauss()==1); 
+        /*assert(M.wyznacznikGauss()==1);*/ 
 }
 };
 

@@ -1,24 +1,37 @@
 #include "pscian.hh"
 #include <fstream>
 using namespace std;
-
-bool pscian::obliczwsp(){
+pscian::pscian(){
     ifstream strmwej;
     strmwej.open("wspolrzedne_robota.dat");
+    if(!strmwej.is_open()){
+        cerr<<"cos jest nie tak!"<<endl;
+        exit(1);
+    }
+    Wektor3D<double,3> punkt;
+    while(strmwej>>punkt){
+        _Wierz_lok.push_back(punkt);
+    }
+  strmwej.close();
+}
+void pscian::obliczwsp(){
+    
     ofstream strmwyj;
     strmwyj.open("wyjsciowe_wsp.dat");
 
-    if(!strmwej.is_open() || !strmwyj.is_open()) return false;
-    /*zmienkat(KatOstr);*/
-   for(unsigned int Ind; Ind<8;++Ind){
-       strmwej>>_Wierz_lok[Ind];
-       strmwyj<<(/*orientacja**/_Wierz_lok[Ind]+translacja)<<endl;
+    if(!strmwyj.is_open()){
+        cerr<<"cos jest nie tak!"<<endl;
+        exit(1);
+    }
+    zmienkat(KatOstr);
+   for(unsigned int Ind; Ind<_Wierz_lok.size();++Ind){
+       strmwyj<<(orientacja*_Wierz_lok[Ind]+translacja)<<endl;
    }
-   return !strmwej.fail() && !strmwyj.fail();
+  strmwyj.close();
 }
-void pscian::zmienp(Wektor3D<double,3> M){
+void pscian::zmienp(const Wektor3D<double,3> &M){
  translacja=translacja+M;
 }
-void pscian::zmienkat(double KatOstr){
-   /* orientacja=orientacja*KatOstr;*/
+void pscian::zmienkat(const double KatOstr){
+    orientacja=orientacja*KatOstr;
 }

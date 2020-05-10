@@ -8,9 +8,9 @@
 class dron:public virtual in_dron,public pscian{
 public:
 void inicjalizacjadrona()override;
-void przesunieciedronawbok(int a)override;
-void przesuneciedronaprzod(int a)override;
-void przesunieciedronagora(int a)override;
+void przesunieciedronabokl(double a)override;
+void przesuneciedronaprzod(double a)override;
+void przesunieciedronagora(double a)override;
 void wait4key();
 };
 
