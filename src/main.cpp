@@ -9,7 +9,7 @@
 using std::cout;
 using std::endl;
 using std::cin;
-
+using std::cerr;
 
 int main(){
   dron dron;
@@ -35,20 +35,38 @@ int main(){
   case '2':{
     cout<<"podaj o ile chcesz przemieścić w bok.Uwaga:podanie dodatniej wartosci spowoduje przesuniecie w prawo, a ujemnej w lewo"<<endl;
     cin>>a;
-    dron.przesunieciedronabokl(a);
+    if(cin.fail()){
+       cout<<"Blad. Program wroci sie do menu"<<endl;
+       cin.clear();
+       cin.ignore(1000, '\n');
+    } 
+    else dron.przesunieciedronabokl(a);
     break;
   }
   case '3':{
     cout<<"podaj o ile chcesz przemieścić w przod.Uwaga:podanie dodatniej wartosci spowoduje przesuniecie w tyl, a ujemnej w przod"<<endl;
     cin>>a;
-    dron.przesuneciedronaprzod(a);
+    if(cin.fail()){
+       cout<<"Blad. Program wroci sie do menu"<<endl;
+       cin.clear();
+       cin.ignore(1000, '\n');
+    } 
+    else dron.przesuneciedronaprzod(a);
     break;
   }
   case '4':{cout<<"podaj o ile chcesz przemieścić w gore.Uwaga:podanie dodatniej wartosci spowoduje przesuniecie w gore, a ujemnej w dol"<<endl;
     cin>>a;
-    dron.przesunieciedronagora(a);
+    if(cin.fail()){
+       cout<<"Blad. Program wroci sie do menu"<<endl;
+       cin.clear();
+       cin.ignore(1000, '\n');
+    } 
+    else dron.przesunieciedronagora(a);
     break;}
   case '0':cout<<"koniec dzialania programu"<<endl;break;
-   }
-     }
-   }
+  default:{
+    cerr<<"Nierozpoznana opcja. Sprobuj ponownie albo uruchom program od poczatku"<<endl;
+    }
+  }
+  }
+}
