@@ -4,7 +4,7 @@ using std::endl;
 using std::cout;
 
 template<typename STyp, int SWymiar>
-const Wektor3D<STyp,SWymiar> & MacierzKw3D<STyp, SWymiar>::operator[] (unsigned int Wie) const{
+const Wektor<STyp,SWymiar> & MacierzKw3D<STyp, SWymiar>::operator[] (unsigned int Wie) const{
     if (Wie < 0 || Wie >= SWymiar) {
       cerr << "poza zakresem" << endl;
       exit(1);
@@ -12,7 +12,7 @@ const Wektor3D<STyp,SWymiar> & MacierzKw3D<STyp, SWymiar>::operator[] (unsigned 
     return Wiersz[Wie];
 }
 template<typename STyp, int SWymiar>
-Wektor3D<STyp,SWymiar> & MacierzKw3D<STyp, SWymiar>::operator[] (unsigned int Wie){
+Wektor<STyp,SWymiar> & MacierzKw3D<STyp, SWymiar>::operator[] (unsigned int Wie){
        if (Wie < 0 || Wie >= SWymiar) {
       cerr << "poza zakresem" << endl;
       exit(1);
@@ -37,12 +37,12 @@ template<typename STyp, int SWymiar>
     return Wiersz[Wie][Kol];
  }
 template<typename STyp, int SWymiar>
-Wektor3D<STyp,SWymiar> MacierzKw3D<STyp,SWymiar>::zwroc_kolumne(int ind)const{
+Wektor<STyp,SWymiar> MacierzKw3D<STyp,SWymiar>::zwroc_kolumne(int ind)const{
   if (ind < 0 || ind >= SWymiar) {
       cerr << "poza zakresem" << endl;
       exit(1);
     } 
-    Wektor3D<STyp,SWymiar> Kol;
+    Wektor<STyp,SWymiar> Kol;
     for(int i=0;i<SWymiar;i++){
       Kol[i]=Wiersz[i][ind];
     }
@@ -51,7 +51,7 @@ Wektor3D<STyp,SWymiar> MacierzKw3D<STyp,SWymiar>::zwroc_kolumne(int ind)const{
   }
  
 template<typename STyp, int SWymiar>
-void MacierzKw3D<STyp,SWymiar>::zmien_kolumne(Wektor3D<STyp,SWymiar> W, int i){
+void MacierzKw3D<STyp,SWymiar>::zmien_kolumne(Wektor<STyp,SWymiar> W, int i){
  for(int j=0;j<SWymiar;j++)
  {
  Wiersz[j][i]=W[j];
@@ -61,7 +61,7 @@ void MacierzKw3D<STyp,SWymiar>::zmien_kolumne(Wektor3D<STyp,SWymiar> W, int i){
 template<typename STyp, int SWymiar>
 void MacierzKw3D<STyp,SWymiar>::transpozycja(){
  MacierzKw3D<STyp,SWymiar> M;
- Wektor3D<STyp,SWymiar> W;
+ Wektor<STyp,SWymiar> W;
  for(int i=0;i<SWymiar;i++){
    M.Wiersz[i]=Wiersz[i];
  }
@@ -115,7 +115,7 @@ template<typename STyp, int SWymiar>
 MacierzKw3D<STyp,SWymiar> MacierzKw3D<STyp,SWymiar>::operator * (const MacierzKw3D<STyp,SWymiar> & M)const{
   MacierzKw3D<STyp,SWymiar> Suma;
   for(int ind=0;ind<SWymiar;ind++){
-  Wektor3D<STyp,SWymiar> WK=M.zwroc_kolumne(ind);
+  Wektor<STyp,SWymiar> WK=M.zwroc_kolumne(ind);
   for(int i=0;i<SWymiar;i++){
   Suma.Wiersz[ind][i]=WK*Wiersz[ind];
   }
@@ -133,9 +133,9 @@ MacierzKw3D<STyp,SWymiar> MacierzKw3D<STyp,SWymiar>::operator * (double l)const{
  }
  
 template<typename STyp, int SWymiar>
-Wektor3D<STyp,SWymiar> MacierzKw3D<STyp,SWymiar>::operator * (const Wektor3D<STyp,SWymiar> &W) const{
+Wektor<STyp,SWymiar> MacierzKw3D<STyp,SWymiar>::operator * (const Wektor<STyp,SWymiar> &W) const{
 STyp Mnoznik;
-Wektor3D<STyp,SWymiar> Wynik;  
+Wektor<STyp,SWymiar> Wynik;  
 for(int ind=0;ind<SWymiar;ind++){
 for(int i=0;i<SWymiar;i++){
 Mnoznik=Wiersz[ind][i]*W[i];

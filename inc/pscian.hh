@@ -6,14 +6,21 @@
 #include "Wektor3D.hh"
 #include "Macierz3D.hh"
 #include <fstream>
+#include "Dr3D_gnuplot_api.hh"
+#include "Draw3D_api_interface.hh"
 
-class pscian:public virtual bryla{
+class pscian:public bryla{
   protected:
-  std::vector<Wektor3D<double,3>> _Wierz_lok;
+  Wektor3D _Wierz_lok[8];
+  Wektor3D _Wierz_glob[8];
   public:
-  pscian();
-  void obliczwsp()override;
-  void zmienp(const Wektor3D<double,3> &M)override;
-  void zmienkat(const double KatOstr)override;
+  pscian(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D *wej, MacierzOb &orientacja):bryla(Api,transformacja,orientacja){
+   for(int i=0;i<8;i++){
+     _Wierz_lok[i]=wej[i];
+   }  
+  }
+  void rysuj()override;
+  void usun(uint dr)override;
+  void rysujodtylu(uint dr);
 };
 #endif

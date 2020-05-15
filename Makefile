@@ -15,13 +15,13 @@ obj/main.o: src/main.cpp inc/dron.hh inc/Dr3D_gnuplot_api.hh
 obj/dron.o: src/dron.cpp inc/dron.hh inc/pscian.hh inc/Dr3D_gnuplot_api.hh inc/Macierz3D.hh inc/Wektor3D.hh
 	g++ -c ${CPPFLAGS} -o obj/dron.o src/dron.cpp
 
-obj/pscian.o:inc/pscian.hh src/pscian.cpp inc/bryla.hh
+obj/pscian.o:inc/pscian.hh src/pscian.cpp inc/bryla.hh inc/Dr3D_gnuplot_api.hh inc/Macierz3D.hh inc/Wektor3D.hh inc/Draw3D_api_interface.hh 
 	g++ -c ${CPPFLAGS} -o obj/pscian.o src/pscian.cpp
 
 obj/Dr3D_gnuplot_api.o: src/Dr3D_gnuplot_api.cpp inc/Dr3D_gnuplot_api.hh inc/Draw3D_api_interface.hh
 	g++ -c ${CPPFLAGS} -o obj/Dr3D_gnuplot_api.o src/Dr3D_gnuplot_api.cpp
 
-obj/WS.o: src/Wektor3D.cpp src/WS.cpp inc/Wektor3D.hh src/Macierz3D.cpp inc/Macierz3D.hh inc/rozmiar.h
+obj/WS.o: src/Wektor3D.cpp src/WS.cpp inc/Wektor3D.hh src/Macierz3D.cpp inc/Macierz3D.hh inc/rozmiar.h inc/Dr3D_gnuplot_api.hh inc/Draw3D_api_interface.hh 
 	g++ -c ${CPPFLAGS} -o obj/WS.o src/WS.cpp 
 
 Dr3D_gnuplot_api.hh: inc/Draw3D_api_interface.hh
@@ -32,7 +32,7 @@ pscian.hh: inc/bryla.hh
 
 dron.hh: inc/interfejs_drona.hh
 	touch inc/dron.hh
-
+pow.hh: inc/pow.hh inc/bryla.hh inc/Dr3D_gnuplot_api.hh
 
 
 

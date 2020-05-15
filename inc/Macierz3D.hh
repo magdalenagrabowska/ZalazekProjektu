@@ -1,10 +1,12 @@
 #ifndef MACIERZ_HH
 #define MACIERZ_HH
 
-#include<assert.h>
 #include <iostream>
 #include "Wektor3D.hh"
 #include <string.h>
+#include <math.h>
+using std::cerr;
+using std::endl;
 /*
  *  Jest to klasa macierz, opisuje rzedy SWymiar tablic jednowymiarowych.
  *  Wraz z klasa wektor posluzy do rozwiazywania rownan liniowych.
@@ -12,7 +14,7 @@
 template<typename STyp, int SWymiar>
 class MacierzKw3D{
  protected:
-  Wektor3D<STyp, SWymiar> Wiersz [SWymiar]; // 3 wektory skladajace sie na macierz, bedace wierszami owej macierzy
+  Wektor<STyp, SWymiar> Wiersz [SWymiar]; // 3 wektory skladajace sie na macierz, bedace wierszami owej macierzy
   public:
   MacierzKw3D(){ 
     for(int i=0;i<SWymiar;i++){
@@ -30,16 +32,16 @@ class MacierzKw3D{
   
   MacierzKw3D<STyp, SWymiar> operator * (const MacierzKw3D<STyp,SWymiar> & M)const;
   MacierzKw3D<STyp, SWymiar>  operator * (double l)const;
-  Wektor3D<STyp, SWymiar> operator * (const Wektor3D<STyp,SWymiar> & W)const;
+  Wektor<STyp, SWymiar> operator * (const Wektor<STyp,SWymiar> & W)const;
 
-  const Wektor3D<STyp, SWymiar> & operator[] (unsigned int Wie) const;
-  Wektor3D<STyp, SWymiar> & operator[] (unsigned int Wie);
+  const Wektor<STyp, SWymiar> & operator[] (unsigned int Wie) const;
+  Wektor<STyp, SWymiar> & operator[] (unsigned int Wie);
 
   const STyp & operator() (unsigned int Wie, unsigned int Kol) const;
   STyp & operator() (unsigned int Wie,unsigned int Kol);
 
- Wektor3D<STyp, SWymiar> zwroc_kolumne(int ind)const; 
- void zmien_kolumne(Wektor3D<STyp,SWymiar> W, int i); 
+ Wektor<STyp, SWymiar> zwroc_kolumne(int ind)const; 
+ void zmien_kolumne(Wektor<STyp,SWymiar> W, int i); 
 };
 
 /*
@@ -86,11 +88,28 @@ template<typename STyp, int SWymiar>
 std::ostream& operator<<(std::ostream &strm, const MacierzKw3D<STyp, SWymiar> &Mac);
 
 class MacierzOb:public MacierzKw3D<double,3>{
+    
     public:
-    MacierzOb(){
-    }
     MacierzOb(const MacierzKw3D<double,3>&M):MacierzKw3D<double,3>(M){
-        /*assert(M.wyznacznikGauss()==1);*/ 
+     /*if(M.wyznacznikGauss()!=1){
+       cerr<<"to nie jest macierz obrotowa"<<endl;
+       exit(1);
+      }*/
+}
+MacierzOb(){
+      Wiersz[0][0]=1;
+      Wiersz[0][1]=0;
+      Wiersz[1][0]=0;
+      Wiersz[1][1]=1;
+      Wiersz[2][2]=1;
+}
+MacierzOb(double kat){
+    double radian=(kat*3.16)/180;
+      Wiersz[0][0]=cos(radian);
+      Wiersz[0][1]=-sin(radian);
+      Wiersz[1][0]=sin(radian);
+      Wiersz[1][1]=cos(radian);
+      Wiersz[2][2]=1;
 }
 };
 
