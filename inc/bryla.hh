@@ -18,13 +18,13 @@ std::shared_ptr<drawNS::Draw3DAPI> api;
 uint id;
 public:
 bryla(drawNS::Draw3DAPI *Api, Wektor3D trans, MacierzOb ori): api(Api), translacja(trans), orientacja(ori){}
-virtual void rysuj()=0;
-virtual void usun(uint dr)=0;
+virtual uint rysuj()=0;
 void zmienp(const Wektor3D &M){
      translacja=translacja+M;
 }
 void zmienkat(double KatOstr){
-    MacierzOb obrot(KatOstr);
+    char z;
+    MacierzOb obrot(z,KatOstr);
     orientacja=orientacja*obrot;
 }
 };

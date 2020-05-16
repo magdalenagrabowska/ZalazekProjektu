@@ -16,23 +16,22 @@ powierzchnia(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D *wej, M
 for(int i=0;i<4;i++){
     punkt[i]=wej[i];
 }
-rysuj();
+powi=rysuj();
 }
-void rysuj()override;
-void usun(uint dr)override;
+uint rysuj()override;
+
 };
 
-void powierzchnia::rysuj(){
+uint powierzchnia::rysuj(){
     powierzchnia pow(*this);
-for(unsigned int Ind; Ind<8;++Ind){
+for(unsigned int Ind=0; Ind<4;++Ind){
     pow.punkt[Ind]=punkt[Ind];
 }
 powi=api->draw_surface(vector<vector<drawNS::Point3D>> {{
     pow.punkt[0].zwrocpunkt(), pow.punkt[1].zwrocpunkt()
 },{pow.punkt[2].zwrocpunkt(), pow.punkt[3].zwrocpunkt()}}, "blue");
 
+return powi;
 }
-void powierzchnia::usun(uint dr){
-    api->erase_shape(dr);
-}
+
 #endif

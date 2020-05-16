@@ -1,11 +1,11 @@
-#include"pow.hh"
+#include"pow_morza.hh"
 #include "dron.hh"
 #include <iostream>
 #include <vector>
 #include <fstream>
 #include "Dr3D_gnuplot_api.hh"
 #include<fstream>
-using std::fstream;
+#include  "wirniki.hh"
 using std::cout;
 using std::endl;
 using std::cin;
@@ -20,20 +20,11 @@ int main(){
   MacierzOb ori;
   Wektor3D pow[4];
   Wektor3D wej[8];
-    wej[0]=Wektor3D(-2,0,0);
-    wej[1]=Wektor3D(-2,2,0);
-    wej[2]=Wektor3D(1,2,0);
-    wej[3]=Wektor3D(1,0,0);
-    wej[4]=Wektor3D(-2,0,3);
-    wej[5]=Wektor3D(-2,2,3);
-    wej[6]=Wektor3D(1,2,3);
-    wej[7]=Wektor3D(1,0,3);
+  Wektor3D wio [12];
+  wirnik_lewy lewusik(api,translacja,wio,ori);
   dron dron(api,translacja,wej,ori);
-    pow[0]=Wektor3D(-4,-4,-4);
-    pow[1]=Wektor3D(-4,4,-4);
-    pow[2]=Wektor3D(4,-4,-4);
-    pow[3]=Wektor3D(4,4,-4);
- powierzchnia powi(api,translacja,pow,ori);
+  pow_dna dno(api,translacja,pow,ori);
+  pow_morza powi(api,translacja,pow,ori);
   double a=0;
   char wybor[2] = " ";
   while (wybor[0]!='0'){

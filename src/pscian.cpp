@@ -10,9 +10,12 @@ using drawNS::APIGnuPlot3D;
 using std::vector;
 
 
-void pscian::rysuj(){
+uint pscian::rysuj(){
+if(id!=1){
+    api->erase_shape(id);
+}
 pscian psian(*this);
-for(unsigned int Ind; Ind<8;++Ind){
+for(unsigned int Ind=0; Ind<8;++Ind){
     psian._Wierz_lok[Ind]=orientacja*_Wierz_lok[Ind]+translacja; 
     _Wierz_glob[Ind]=psian._Wierz_lok[Ind];
 }
@@ -21,18 +24,12 @@ for(unsigned int Ind; Ind<8;++Ind){
     },{
     psian._Wierz_lok[4].zwrocpunkt(),psian._Wierz_lok[5].zwrocpunkt(),psian._Wierz_lok[6].zwrocpunkt(),psian._Wierz_lok[7].zwrocpunkt()
     }},"green");
-for(unsigned int Ind; Ind<8;++Ind){
-    _Wierz_lok[Ind]=_Wierz_glob[Ind];
-}
+MacierzOb obi;
+orientacja=obi;
+return id;
 }
 
-void pscian::usun(uint dr){
-    api->erase_shape(dr);
-}
-void pscian::rysujodtylu(uint dr){
-    usun(dr);
-    rysuj();
-}
+
 
 
    

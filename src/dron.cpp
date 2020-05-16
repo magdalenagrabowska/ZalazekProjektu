@@ -11,37 +11,73 @@ using std::cout;
 using std::endl;
 using std::cerr;
 
+/*!
+   * \brief funkcja wait4key jest poleceniem dla gnuplota, żeby poczekał na wskazany przycisk wpisany
+   * z klawiatury przez użytkownika, w tym wypadku jest to klawisz "w", po nim przechodzi do następnej akcji
+   */ 
+
+
 void dron::wait4key(){
   do {
     std::cout << "\n Press w to continue..." << std::endl;
   } while(std::cin.get() != 'w');
 }
 
+/*!
+   * \brief medota klasy dron. Przesuwa drona w przód albo w tyl, czyli z założeń wzdłuż osi Y o zadaną wartość
+   */ 
+
+
 void dron::przesuneciedronaprzod(double a){
   Wektor3D move;
-  move[1]=a;
+  for(int i=0;i<abs(a);i++){
+  if(iden!=1){
+  api->erase_shape(iden);
+  }
+  if(a>0)move[1]=1;
+  else move[1]=-1;
   zmienp(move);
- rysuj();
+  iden=rysuj();
   wait4key();
+  }
 }
-
+/*!
+   * \brief medota klasy dron. Przesuwa drona w bok, czyli z założeń wzdłuż osi X o zadaną wartość
+   */ 
 void dron::przesunieciedronabokl(double a){
   Wektor3D move;
-  move[0]=a;
+  for(int i=0;i<abs(a);i++){
+  if(iden!=1){
+  api->erase_shape(iden);
+  }
+  if(a>0)move[0]=1;
+  else move[0]=-1;
   zmienp(move);
-  rysuj();
+  iden=rysuj();
   wait4key();
+  }
 }
+/*!
+   * \brief medota klasy dron. Przesuwa drona w pionie, czyli z założeń wzdłuż osi Z o zadaną wartość
+   */
 void dron::przesunieciedronagora(double a){
   Wektor3D move;
-  move[2]=a;
+  for(int i=0;i<abs(a);i++){
+  if(iden!=1){
+  api->erase_shape(iden);
+  }
+  if(a>0)move[2]=1;
+  else move[2]=-1;
   zmienp(move);
-  rysuj();
+  iden=rysuj();
   wait4key();
-
+  }
 }
-
+/*!
+   * \brief medota klasy dron. Z zalozenia obraca dronem o zadany kat
+   */
 void dron::obrot(double kat){
+  api->erase_shape(iden);
   zmienkat(kat);
-  rysuj();
+  uint am=rysuj();
 }
