@@ -5,7 +5,6 @@
 #include <fstream>
 #include "Dr3D_gnuplot_api.hh"
 #include<fstream>
-#include  "wirniki.hh"
 using std::cout;
 using std::endl;
 using std::cin;
@@ -20,11 +19,12 @@ int main(){
   MacierzOb ori;
   Wektor3D pow[4];
   Wektor3D wej[8];
-  Wektor3D wio [12];
-  wirnik_lewy lewusik(api,translacja,wio,ori);
-  dron dron(api,translacja,wej,ori);
+  Wektor3D wirnikl[12];
+  Wektor3D wirnikp[12];
+  dron dron(api,translacja,wej,wirnikl,wirnikp,ori);
   pow_dna dno(api,translacja,pow,ori);
   pow_morza powi(api,translacja,pow,ori);
+  dron.rysuj();
   double a=0;
   char wybor[2] = " ";
   while (wybor[0]!='0'){

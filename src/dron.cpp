@@ -31,9 +31,9 @@ void dron::wait4key(){
 void dron::przesuneciedronaprzod(double a){
   Wektor3D move;
   for(int i=0;i<abs(a);i++){
-  if(iden!=1){
-  api->erase_shape(iden);
-  }
+  /*if(iden!=1){
+  bryla::api->erase_shape(iden);
+  }*/
   if(a>0)move[1]=1;
   else move[1]=-1;
   zmienp(move);
@@ -47,9 +47,9 @@ void dron::przesuneciedronaprzod(double a){
 void dron::przesunieciedronabokl(double a){
   Wektor3D move;
   for(int i=0;i<abs(a);i++){
-  if(iden!=1){
-  api->erase_shape(iden);
-  }
+  /*if(iden!=1){
+  bryla::api->erase_shape(iden);
+  }*/
   if(a>0)move[0]=1;
   else move[0]=-1;
   zmienp(move);
@@ -63,9 +63,9 @@ void dron::przesunieciedronabokl(double a){
 void dron::przesunieciedronagora(double a){
   Wektor3D move;
   for(int i=0;i<abs(a);i++){
-  if(iden!=1){
-  api->erase_shape(iden);
-  }
+  /*if(iden!=1){
+  bryla::api->erase_shape(iden);
+  }*/
   if(a>0)move[2]=1;
   else move[2]=-1;
   zmienp(move);
@@ -77,7 +77,15 @@ void dron::przesunieciedronagora(double a){
    * \brief medota klasy dron. Z zalozenia obraca dronem o zadany kat
    */
 void dron::obrot(double kat){
-  api->erase_shape(iden);
+  /*bryla::api->erase_shape(iden);*/
   zmienkat(kat);
   uint am=rysuj();
+}
+
+uint dron::rysuj(){
+  uint p=pscian::rysuj();
+  uint w=lewus.rysuj();
+  uint wi=prawus.rysuj();
+  iden=p+w+wi;
+  return iden;
 }
