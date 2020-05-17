@@ -85,7 +85,7 @@ void dron::obrot(double kat){
 uint dron::rysuj(){
   uint p=pscian::rysuj();
   uint w=lewus.rysuj();
-  uint wi=prawus.rysuj();
-  iden=p+w+wi;
+ uint wi=prawus.rysuj();
+  iden=p+w;
   return iden;
 }

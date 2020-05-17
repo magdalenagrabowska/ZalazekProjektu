@@ -5,7 +5,7 @@
 #include "pscian.hh"
 #include "wirniki.hh"
 
-class dron:public in_dron,public pscian/*public wirnik_lewy,public wirnik_prawy*/{
+class dron:public in_dron,public pscian{
 public:
 wirnik prawus;
 wirnik lewus;
@@ -35,10 +35,8 @@ dron(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D wej[8],Wektor3D
    wirusp[8]=Wektor3D(0.5,-2,2);
    wirusp[9]=Wektor3D(1,-2,1.5) ;
    wirusp[10]=Wektor3D(0.5,-2,1);
-   wirusp[11]=Wektor3D(-0.5,-2,1) ;
-}
-      
-
+   wirusp[11]=Wektor3D(-0.5,-2,1);
+} 
 void wait4key();
 void przesunieciedronabokl(double a)override;
 void przesuneciedronaprzod(double a)override;

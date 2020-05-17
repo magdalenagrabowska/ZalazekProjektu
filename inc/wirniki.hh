@@ -1,42 +1,33 @@
 #ifndef WIRNIKI_HH
 #define WIRNIKI_HH
 
-#include "pscian.hh"
+#include "pscian6.hh"
 #include"Wektor3D.hh"
 #include "Macierz3D.hh"
-
-class pscian6:public pscian{
-protected:
-char y;
-uint wir=1;
-Wektor3D wierzchy [12];
-Wektor3D srodek=Wektor3D(0,0.5,0);
-MacierzOb staly_obrot = MacierzOb(y,1);
-public:
-pscian6(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D wej[12], MacierzOb &orientacja):pscian(Api,transformacja,wej,orientacja){
-for(int i=0;i<12;i++){
-    wej[1]=wierzchy[i];
-}
-}
-uint rysuj();
-};
-
 
 
 
 class wirnik:public pscian6{
 protected:
+/*char y;
+uint wir=1;
+Wektor3D wierzchy [12];
+Wektor3D srodek=Wektor3D(0,0.5,0);
+MacierzOb staly_obrot = MacierzOb(y,1);*/
 public:
 wirnik(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D wej[12], MacierzOb &orientacja):pscian6(Api,transformacja,wej,orientacja){
+/*for(int i=0;i<12;i++){
+    wej[1]=wierzchy[i];
+}*/
 }
-
+/*uint rysuj();*/
 };
 
-uint pscian6::rysuj(){
+/*uint wirnik::rysuj(){
  if(wir!=1){
     api->erase_shape(wir);
 }
-pscian6 wirn(*this);
+wirnik wirn(*this);
 for(unsigned int Ind=0; Ind<12;++Ind){
     wirn.wierzchy[Ind]=orientacja*wierzchy[Ind]+translacja; 
 }
@@ -87,7 +78,7 @@ wirnik_prawy(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D wej[12]
    wierzchy[11]=Wektor3D(-0.5,-2,1) ;
 }
 };
-
+*/
 
 
 
