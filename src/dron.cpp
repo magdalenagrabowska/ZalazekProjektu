@@ -78,7 +78,7 @@ void dron::przesunieciedronagora(double a){
    */
 void dron::obrot(double kat){
   /*bryla::api->erase_shape(iden);*/
-  zmienkat(kat);
+  zmienkatz(kat);
   uint am=rysuj();
 }
 

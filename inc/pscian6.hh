@@ -13,7 +13,7 @@ char y;
 uint wir=1;
 Wektor3D wierzchy [12];
 Wektor3D srodek=Wektor3D(0,0.5,0);
-MacierzOb staly_obrot = MacierzOb(y,1);
+MacierzOb staly_obrot;
 public:
 pscian6(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D wej[12], MacierzOb &orientacja):pscian(Api,transformacja,wej,orientacja){
 for(int i=0;i<12;i++){

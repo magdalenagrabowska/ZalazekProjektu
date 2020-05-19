@@ -22,9 +22,14 @@ virtual uint rysuj()=0;
 void zmienp(const Wektor3D &M){
      translacja=translacja+M;
 }
-void zmienkat(double KatOstr){
-    char z;
-    MacierzOb obrot(z,KatOstr);
+void zmienkatz(double KatOstr){
+    MacierzOb obrot;
+    obrot.macobrz(KatOstr);
+    orientacja=orientacja*obrot;
+}
+void zmienkaty(double KatOstr){
+    MacierzOb obrot; 
+    obrot.macobrzy(KatOstr);
     orientacja=orientacja*obrot;
 }
 };

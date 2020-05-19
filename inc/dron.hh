@@ -4,6 +4,7 @@
 #include "interfejs_drona.hh"
 #include "pscian.hh"
 #include "wirniki.hh"
+#include "Macierz3D.hh"
 
 class dron:public in_dron,public pscian{
 public:
