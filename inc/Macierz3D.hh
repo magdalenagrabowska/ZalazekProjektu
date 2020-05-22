@@ -19,7 +19,7 @@ class MacierzKw3D{
   MacierzKw3D(){ 
     for(int i=0;i<SWymiar;i++){
      for(int j=0;j<SWymiar;j++){
-     Wiersz[i][j]=0; 
+      Wiersz[i][j]=0; 
     }
   }
   }
@@ -91,17 +91,15 @@ class MacierzOb:public MacierzKw3D<double,3>{
      
     public:
     MacierzOb(const MacierzKw3D<double,3>&M):MacierzKw3D<double,3>(M){ 
-   if(wyznacznikGauss()!=1.0){
+   /*if(wyznacznikGauss()!=1.0){
        cerr<<"to nie jest macierz obrotowa"<<endl;
-      }
-      Wiersz[0][0]=1;
-      Wiersz[0][1]=0;
-      Wiersz[1][0]=0;
-      Wiersz[1][1]=1;
-      Wiersz[2][2]=1;
+      }*/
 
  }
    MacierzOb(){
+     /*if(wyznacznikGauss()!=1.0){
+       cerr<<"to nie jest macierz obrotowa"<<endl;
+      }*/
       Wiersz[0][0]=1;
       Wiersz[0][1]=0;
       Wiersz[1][0]=0;
@@ -117,7 +115,7 @@ void macobrz(double KatOstr){
       Wiersz[1][1]=cos(radian);
       Wiersz[2][2]=1;
 }
-void macobrzy(double KatOstr){
+void macobry(double KatOstr){
    double radian=(KatOstr*3.1419592)/180;
       Wiersz[0][0]=cos(radian);
       Wiersz[0][2]=sin(radian);
@@ -125,7 +123,11 @@ void macobrzy(double KatOstr){
       Wiersz[2][2]=cos(radian);
       Wiersz[1][1]=1; 
 }
-  
+
+
+
+
+
 };
 
 #endif

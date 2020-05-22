@@ -13,13 +13,13 @@ class pscian:public bryla{
   protected:
   Wektor3D _Wierz_lok[8];
   Wektor3D _Wierz_glob[8];
-  uint id=1;
+  int id=-1;
   public:
   pscian(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D wej[8], MacierzOb &orientacja):bryla(Api,transformacja,orientacja){
    for(int i=0;i<8;i++){
      _Wierz_lok[i]=wej[i];
    }  
   }
-  uint rysuj()override;
+  int rysuj()override;
 };
 #endif

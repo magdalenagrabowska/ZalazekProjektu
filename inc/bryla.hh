@@ -15,21 +15,21 @@ protected:
 MacierzOb orientacja;
 Wektor3D translacja;
 std::shared_ptr<drawNS::Draw3DAPI> api;
-uint id;
+int id=-1;
 public:
 bryla(drawNS::Draw3DAPI *Api, Wektor3D trans, MacierzOb ori): api(Api), translacja(trans), orientacja(ori){}
-virtual uint rysuj()=0;
+virtual int rysuj()=0;
 void zmienp(const Wektor3D &M){
      translacja=translacja+M;
 }
-void zmienkatz(double KatOstr){
+void zmienkaty(double KatOstr){
     MacierzOb obrot;
-    obrot.macobrz(KatOstr);
+    obrot.macobry(KatOstr);
     orientacja=orientacja*obrot;
 }
-void zmienkaty(double KatOstr){
+void zmienkatz(double KatOstr){
     MacierzOb obrot; 
-    obrot.macobrzy(KatOstr);
+    obrot.macobrz(KatOstr);
     orientacja=orientacja*obrot;
 }
 };

@@ -111,13 +111,18 @@ MacierzKw3D<STyp,SWymiar> MacierzKw3D<STyp,SWymiar>::operator - (const MacierzKw
    }
   return Suma;
   }
+  
 template<typename STyp, int SWymiar>
 MacierzKw3D<STyp,SWymiar> MacierzKw3D<STyp,SWymiar>::operator * (const MacierzKw3D<STyp,SWymiar> & M)const{
   MacierzKw3D<STyp,SWymiar> Suma;
-  for(int ind=0;ind<SWymiar;ind++){
-  Wektor<STyp,SWymiar> WK=M.zwroc_kolumne(ind);
+  MacierzKw3D<STyp,SWymiar> Mnoznik;
+   for(int ind=0;ind<SWymiar;ind++){
+  for(int j=0;j<SWymiar;j++){
+  Wektor<STyp,SWymiar> Kolumna=M.zwroc_kolumne(j);
   for(int i=0;i<SWymiar;i++){
-  Suma.Wiersz[ind][i]=WK*Wiersz[ind];
+  Mnoznik.Wiersz[ind]=Wiersz[ind]*Kolumna[i];
+  Suma[ind][j]+=Mnoznik[ind][i];
+  }
   }
   }
   return Suma;

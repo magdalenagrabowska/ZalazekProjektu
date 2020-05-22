@@ -10,8 +10,8 @@ using drawNS::APIGnuPlot3D;
 using std::vector;
 
 
-uint pscian::rysuj(){
-if(id!=1){
+int pscian::rysuj(){
+if(id!=-1){
     api->erase_shape(id);
 }
 pscian psian(*this);
@@ -24,8 +24,10 @@ for(unsigned int Ind=0; Ind<8;++Ind){
     },{
     psian._Wierz_lok[4].zwrocpunkt(),psian._Wierz_lok[5].zwrocpunkt(),psian._Wierz_lok[6].zwrocpunkt(),psian._Wierz_lok[7].zwrocpunkt()
     }},"green");
-MacierzOb obi;
-orientacja=obi;
+
+
+
+
 return id;
 }
 

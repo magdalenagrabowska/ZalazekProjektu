@@ -13,7 +13,7 @@ Wektor3D wej[8];
 virtual void przesunieciedronabokl(double a)=0;
 virtual void przesuneciedronaprzod(double a)=0;
 virtual void przesunieciedronagora(double a)=0;
-virtual void obrot(double kat)=0;
+virtual int obrot(double kat)=0;
 };
 
 

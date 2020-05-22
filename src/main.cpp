@@ -13,6 +13,8 @@ using std::vector;
 using drawNS::Point3D;
 using drawNS::APIGnuPlot3D;
 
+//modyfikacja modułu na tydzień 2
+
 int main(){
   drawNS::APIGnuPlot3D *api=new drawNS::APIGnuPlot3D(-20,20,-20,20,-20,20,0);
   Wektor3D translacja;
@@ -78,7 +80,7 @@ int main(){
        cin.clear();
        cin.ignore(1000, '\n');
     } 
-    else dron.obrot(a);
+    else uint w=dron.obrot(a);
     break;}
   
   case '0':cout<<"koniec dzialania programu"<<endl;break;
