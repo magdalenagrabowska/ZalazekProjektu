@@ -95,6 +95,8 @@ int dron::obrot(double kat){
   for(int i=1;i<=kat;i++)
   {
   zmienkatz(1);
+  lewus.zmienkatz(1);
+  prawus.zmienkatz(1);
   int iden=rysuj();
   lewus.rysuj();
   prawus.rysuj();
@@ -106,6 +108,14 @@ int dron::obrot(double kat){
 }
 
 int dron::rysuj(){
+  _Wierz_lok[0]=Wektor3D(-3,0,0);  
+  _Wierz_lok[1]=Wektor3D(-3,2,0);  
+  _Wierz_lok[2]=Wektor3D(1,2,0);     
+  _Wierz_lok[3]=Wektor3D(1,0,0);     
+  _Wierz_lok[4]=Wektor3D(-3,0,3);   
+  _Wierz_lok[5]=Wektor3D(-3,2,3);    
+  _Wierz_lok[6]=Wektor3D(1,2,3);   
+ _Wierz_lok[7]=Wektor3D(1,0,3);
   int p=pscian::rysuj();
  int w=lewus.rysuj();
  int wi=prawus.rysuj();
