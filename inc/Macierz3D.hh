@@ -91,15 +91,15 @@ class MacierzOb:public MacierzKw3D<double,3>{
      
     public:
     MacierzOb(const MacierzKw3D<double,3>&M):MacierzKw3D<double,3>(M){ 
-   /*if(wyznacznikGauss()!=1.0){
+    if(abs(wyznacznikGauss()-1)>0.001){
        cerr<<"to nie jest macierz obrotowa"<<endl;
-      }*/
+      }
 
  }
    MacierzOb(){
-     /*if(wyznacznikGauss()!=1.0){
+     if(abs(wyznacznikGauss()-1)>0.001){
        cerr<<"to nie jest macierz obrotowa"<<endl;
-      }*/
+      }
       Wiersz[0][0]=1;
       Wiersz[0][1]=0;
       Wiersz[1][0]=0;

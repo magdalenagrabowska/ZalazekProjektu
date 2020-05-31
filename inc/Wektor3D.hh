@@ -96,6 +96,16 @@ Wektor3D(){
 drawNS::Point3D zwrocpunkt(){
   return drawNS::Point3D(_tab[0],_tab[1],_tab[2]);
  }
+double dlugosc() const{
+  Wektor3D W2;
+  double a;
+  for(int i=0;i<3;i++){
+    double skl=(pow((_tab[i]),(2)));
+    a+=skl;
+  }
+  a=sqrt(a);
+return a;
+  }  
 };
 
 #endif

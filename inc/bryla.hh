@@ -10,14 +10,23 @@
 using drawNS::Point3D;
 using drawNS::APIGnuPlot3D;
 
-class bryla{
+class obiekt{
 protected:
 MacierzOb orientacja;
 Wektor3D translacja;
 std::shared_ptr<drawNS::Draw3DAPI> api;
+public:
+obiekt(drawNS::Draw3DAPI *Api, Wektor3D trans, MacierzOb ori): api(Api), translacja(trans), orientacja(ori){}
+};
+
+class bryla:public obiekt{
+protected:
+/*MacierzOb orientacja;
+Wektor3D translacja;
+std::shared_ptr<drawNS::Draw3DAPI> api;*/
 int id=-1;
 public:
-bryla(drawNS::Draw3DAPI *Api, Wektor3D trans, MacierzOb ori): api(Api), translacja(trans), orientacja(ori){}
+bryla(drawNS::Draw3DAPI *Api, Wektor3D trans, MacierzOb ori):obiekt(Api,trans,ori){}
 virtual int rysuj()=0;
 void zmienp(const Wektor3D &M){
      translacja=translacja+M;

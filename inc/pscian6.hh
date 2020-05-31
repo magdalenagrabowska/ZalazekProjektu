@@ -7,19 +7,19 @@
 
 //modul na tydzień 2
 
-class pscian6:public pscian{
+class pscian6:public bryla{
 protected:
 char y;
 int wir=-1;
 Wektor3D wierzchy [12];
 MacierzOb staly_obrot;
 public:
-pscian6(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D wej[12], MacierzOb &orientacja):pscian(Api,transformacja,wej,orientacja){
+pscian6(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D wej[12], MacierzOb &orientacja):bryla(Api,transformacja,orientacja){
 for(int i=0;i<12;i++){
     wej[1]=wierzchy[i];
 }
 }
-int rysuj(){
+int rysuj()override{
 if(wir!=-1){
     api->erase_shape(wir);
 }

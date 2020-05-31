@@ -9,18 +9,18 @@
 
 //moduł na tydzień 2
 
-class powierzchnia:public bryla{
+class powierzchnia:public obiekt{
 protected:
 Wektor3D punkt[9];
 public:
 int powi;
-powierzchnia(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D *wej, MacierzOb &orientacja):bryla(Api,transformacja,orientacja){
+powierzchnia(drawNS::APIGnuPlot3D *Api, Wektor3D &transformacja,Wektor3D *wej, MacierzOb &orientacja):obiekt(Api,transformacja,orientacja){
 for(int i=0;i<9;i++){
     punkt[i]=wej[i];
 }
 powi=rysuj();
 }
-int rysuj()override;
+int rysuj();
 
 };
 

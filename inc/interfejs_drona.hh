@@ -9,8 +9,9 @@
 
 class in_dron{
 public:
-Wektor3D wej[8];
-virtual void przesunieciedronabokl(double a)=0;
+virtual float zwroc_srednice()=0;
+virtual Wektor3D zwroc_translacje()=0;
+/*virtual void przesunieciedronabokl(double a)=0;*/
 virtual void przesuneciedronaprzod(double a)=0;
 virtual void przesunieciedronagora(double a)=0;
 virtual int obrot(double kat)=0;

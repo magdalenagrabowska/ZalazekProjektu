@@ -26,6 +26,7 @@ void dron::wait4key(){
   } while(std::cin.get() != 'w');
 }
 
+
 /*!
    * \brief medota klasy dron. Przesuwa drona w przód albo w tyl, czyli z założeń wzdłuż osi Y o zadaną wartość.
    * Wartość ujemna zakłada że dron przesuwa się w tył.
@@ -34,25 +35,25 @@ void dron::wait4key(){
 
 void dron::przesuneciedronaprzod(double a){
   Wektor3D move;
-  for(int i=0;i<abs(a);i++){
+  /*for(int i=0;i<abs(a);i++){*/
   if(a>0)move[1]=1;
   else move[1]=-1;
   zmienp(move);
   iden=rysuj();
-  lewus.zmienp(move);
+ lewus.zmienp(move);
   prawus.zmienp(move);
   lewus.rysuj();
   prawus.rysuj();
   /*lewus.ciaglyobr();
   prawus.ciaglyobr();*/
   this_thread::sleep_for(chrono::milliseconds(10));
-  }
+  /*}*/
 }
 /*!
    * \brief medota klasy dron. Przesuwa drona w bok, czyli z założeń wzdłuż osi X o zadaną wartość.
    * Wartość ujemna zakłada że dron przesuwa się w prawo.
    */ 
-void dron::przesunieciedronabokl(double a){
+/*void dron::przesunieciedronabokl(double a){
   Wektor3D move;
   for(int i=0;i<abs(a);i++){
   if(a>0)move[0]=1;
@@ -65,16 +66,17 @@ void dron::przesunieciedronabokl(double a){
   prawus.rysuj();
   /*lewus.ciaglyobr();
   prawus.ciaglyobr();*/
-  this_thread::sleep_for(chrono::milliseconds(10));
+  /*this_thread::sleep_for(chrono::milliseconds(10));
   }
 }
 /*!
    * \brief medota klasy dron. Przesuwa drona w pionie, czyli z założeń wzdłuż osi Z o zadaną wartość.
    * Wartość ujemna zakłada że dron przesuwa się w dół.
    */
+  
 void dron::przesunieciedronagora(double a){
   Wektor3D move;
-  for(int i=0;i<abs(a);i++){
+  /*for(int i=0;i<abs(a);i++){*/
   if(a>0)move[2]=1;
   else move[2]=-1;
   zmienp(move);
@@ -86,7 +88,7 @@ void dron::przesunieciedronagora(double a){
   /*lewus.ciaglyobr();
   prawus.ciaglyobr();*/
   this_thread::sleep_for(chrono::milliseconds(10));
-  }
+  /*}*/
 }
 /*!
    * \brief medota klasy dron. Z zalozenia obraca dronem o zadany kat
@@ -108,14 +110,6 @@ int dron::obrot(double kat){
 }
 
 int dron::rysuj(){
-  _Wierz_lok[0]=Wektor3D(-3,0,0);  
-  _Wierz_lok[1]=Wektor3D(-3,2,0);  
-  _Wierz_lok[2]=Wektor3D(1,2,0);     
-  _Wierz_lok[3]=Wektor3D(1,0,0);     
-  _Wierz_lok[4]=Wektor3D(-3,0,3);   
-  _Wierz_lok[5]=Wektor3D(-3,2,3);    
-  _Wierz_lok[6]=Wektor3D(1,2,3);   
- _Wierz_lok[7]=Wektor3D(1,0,3);
   int p=pscian::rysuj();
  int w=lewus.rysuj();
  int wi=prawus.rysuj();

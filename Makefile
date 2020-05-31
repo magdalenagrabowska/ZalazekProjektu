@@ -9,10 +9,10 @@ obj:
 ./test_drona: obj obj/main.o obj/dron.o obj/Dr3D_gnuplot_api.o obj/WS.o obj/pscian.o
 	g++ -o ./test_drona obj/main.o obj/dron.o obj/Dr3D_gnuplot_api.o obj/WS.o obj/pscian.o -lpthread
 
-obj/main.o: src/main.cpp inc/dron.hh inc/Dr3D_gnuplot_api.hh inc/pow_morza.hh 
+obj/main.o: src/main.cpp inc/dron.hh inc/Dr3D_gnuplot_api.hh inc/pow_morza.hh inc/interfejs_drona.hh inc/interfejs_przeszkody.hh
 	g++ -c ${CPPFLAGS} -o obj/main.o src/main.cpp
 
-obj/dron.o: src/dron.cpp inc/dron.hh inc/pscian.hh inc/Dr3D_gnuplot_api.hh inc/Macierz3D.hh inc/Wektor3D.hh inc/wirniki.hh inc/pscian6.hh
+obj/dron.o: src/dron.cpp inc/dron.hh inc/pscian.hh inc/Dr3D_gnuplot_api.hh inc/Macierz3D.hh inc/Wektor3D.hh inc/wirniki.hh inc/interfejs_przeszkody.hh inc/interfejs_drona.hh
 	g++ -c ${CPPFLAGS} -o obj/dron.o src/dron.cpp
 
 obj/pscian.o:inc/pscian.hh src/pscian.cpp inc/bryla.hh inc/Dr3D_gnuplot_api.hh inc/Macierz3D.hh inc/Wektor3D.hh inc/Draw3D_api_interface.hh 
@@ -32,7 +32,12 @@ pscian.hh: inc/bryla.hh
 
 dron.hh: inc/interfejs_drona.hh
 	touch inc/dron.hh
+
 pow.hh: inc/pow.hh inc/bryla.hh inc/Dr3D_gnuplot_api.hh
+
+interfejs_przeszkody.hh: inc/interfejs_drona.hh inc/dron.hh inc/Dr3D_gnuplot_api.hh inc/pscian.hh
+	touch inc/interfejs_przeszkody.hh
+
 
 
 
